@@ -7,7 +7,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeormConfigAsyc } from './config/typeorm.config';
-import { ServiceService } from './auth/service/service.service';
+import { ServiceService } from './auth/service/auth.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ServiceService } from './auth/service/service.service';
     }),
     TypeOrmModule.forRootAsync(typeormConfigAsyc),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, ServiceService],
